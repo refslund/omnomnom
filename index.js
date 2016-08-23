@@ -5,10 +5,8 @@ var app = express();
 
 app.use(express.static('public'));
 
-//app.get('/', function (req, res) {
-//  res.send('Hello World')
-//})
- 
+// TEST
+// Lookup food truck by locatoinid, hard coded
 app.get('/getsome', function (req, res) {
 	console.log('get some');
 	
@@ -23,21 +21,9 @@ app.get('/getsome', function (req, res) {
 		}
 		res.send(json);
 	}).end();
-	
-  //res.redirect('http://google.com');
-	
-//	var url = 'https://data.sfgov.org/resource/6a9r-agq8.json';
-//	var options = {
-//		host: url
-//	};
-//	https.request(options, function(res) {
-//		console.log('STATUS: ' + res.statusCode);
-//		console.log('HEADERS: ' + JSON.stringify(res.headers));
-//		res.setEncoding('utf8');
-//		res.on('data', function (chunk) {
-//			console.log('BODY: ' + chunk);
-//		});
-//	}).end();
 })
- 
+
+
+// 
+// Start server
 app.listen(3000)

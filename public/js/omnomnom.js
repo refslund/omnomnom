@@ -1,4 +1,5 @@
 var map;
+var markers = [];
 
 function init_map() {
 	var myOptions = {
@@ -42,11 +43,13 @@ function addMarker() {
 		map: this.map,
 		position: new google.maps.LatLng(37.7748713162388, -122.398531708276)
 	});
+	this.markers.push(marker1);
 	infowindow1 = new google.maps.InfoWindow({content:'<strong>Title<\/strong><br>palo alto<br>'});
 	marker2 = new google.maps.Marker({
 		map: this.map,
 		position: new google.maps.LatLng(37.78, -122.5)
 	});
+	this.markers.push(marker2);
 	google.maps.event.addListener(
 		marker1,
 		'click',
@@ -59,7 +62,6 @@ function addMarker() {
 // Look up food truck by locationid
 // TODO Delete function
 function findMeATruck() {
-	console.log('***** findMeATruck');
 	var that = this;
 	
 	$.ajax({url: "/getsome", success: function(result){
@@ -69,13 +71,18 @@ function findMeATruck() {
 		var lat = truck.latitude;
 		var lng = truck.longitude;
 		
-		console.log('lat, lng: ', lat, lng);
-		
-		new google.maps.Marker({
+		var marker = new google.maps.Marker({
 			map: that.map,
 			position: new google.maps.LatLng(lat, lng)
 		});
-
-		console.log('***** DONE');
+		that.markers.push(marker);
 	}});	
+}
+
+// Clears all food truck markers from the map
+function clearMarkers() {
+	for (var i = 0; i < this.markers.length; i++) {
+		this.markers[i].setMap(null);
+	}
+	this.markers = [];
 }
