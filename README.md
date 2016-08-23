@@ -1,5 +1,6 @@
 Om Nom Nom
 ==========
+
 sfdata food trucks
 
 Show data from this public data set:
@@ -8,6 +9,7 @@ https://data.sfgov.org/Economy-and-Community/Mobile-Food-Facility-Permit/rqzj-sf
 
 Architecture and Design Decisions
 =================================
+
 Simplicity
 - Most tradeoffs and design decisions have been made in favor of simplicity. Both in actual lines of codes, as well as in architecture and deployment considerations.
 
@@ -30,6 +32,11 @@ No Google Maps API key
 
 No HTTPS
 - No good reason to do this. Only lazyness.
+
+External dependencies (Bootstrap, JQuery, ..) served from external CDNs.
+- Limit size of project (KB, number of files)
+- Simplicity
+- Website requires internet access anyway
 
 
 Standing on the shoulder of giants
