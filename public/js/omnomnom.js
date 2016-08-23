@@ -1,13 +1,3 @@
-function initializeMap() {
-	console.log('initializeMap');
-//    var mapOptions = {
-//            center: new google.maps.LatLng(40.435833800555567, -78.44189453125),
-//            mapTypeId: google.maps.MapTypeId.ROADMAP,
-//            zoom: 11
-//          };	 
-//    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-};
-
 var map;
 
 function init_map() {
@@ -38,26 +28,13 @@ function init_map() {
 		]				
 	};
 	this.map = new google.maps.Map(document.getElementById('map'), myOptions);
-//			marker1 = new google.maps.Marker({
-//				map: map,
-//				position: new google.maps.LatLng(37.7748713162388, -122.398531708276)
-//			});
-//			infowindow1 = new google.maps.InfoWindow({content:'<strong>Title<\/strong><br>palo alto<br>'});
-//			marker2 = new google.maps.Marker({
-//				map: map,
-//				position: new google.maps.LatLng(37.78, -122.5)
-//			});
-//			google.maps.event.addListener(
-//				marker1,
-//				'click',
-//				function() {
-//					infowindow1.open(map,marker1);
-//				});
-//			//infowindow1.open(map,marker1); // pre-open
 }
 
 google.maps.event.addDomListener(window, 'load', init_map);
 
+// TEST
+// Dynamically add some markers
+// TODO Delete function
 function addMarker() {
 	console.log('***** add marker');
 	
@@ -76,4 +53,29 @@ function addMarker() {
 		function() {
 			infowindow1.open(this.map, marker1);
 		});
+}
+
+// TEST
+// Look up food truck by locationid
+// TODO Delete function
+function findMeATruck() {
+	console.log('***** findMeATruck');
+	var that = this;
+	
+	$.ajax({url: "/getsome", success: function(result){
+		var json = JSON.parse(result);
+		var truck = json[0];
+		
+		var lat = truck.latitude;
+		var lng = truck.longitude;
+		
+		console.log('lat, lng: ', lat, lng);
+		
+		new google.maps.Marker({
+			map: that.map,
+			position: new google.maps.LatLng(lat, lng)
+		});
+
+		console.log('***** DONE');
+	}});	
 }
