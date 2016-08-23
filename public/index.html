@@ -25,9 +25,10 @@
   </head>
 	
   <body>
-		<div style='overflow:hidden;height:440px;width:700px;'>
-    	<div id='gmap_canvas' style='height:440px;width:700px;'></div>
-		</div>
+    <div id="container">
+        <div id="nav">Nav Menu</div>
+        <div id="map"></div>
+    </div>
 		
 		<script type='text/javascript'>
 		//<![CDATA[
@@ -58,7 +59,7 @@
 					}
 				]				
 			};
-			map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
+			map = new google.maps.Map(document.getElementById('map'), myOptions);
 			marker1 = new google.maps.Marker({
 				map: map,
 				position: new google.maps.LatLng(37.7748713162388, -122.398531708276)
