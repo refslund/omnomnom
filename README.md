@@ -41,10 +41,10 @@ Not a chance. For instance:
 
 - [sfdata application token](https://dev.socrata.com/consumers/getting-started.html)
 - [sfdata query paging](https://dev.socrata.com/docs/paging.html). Right now: A hard coded limit and no UI indication
-- No Google Maps API key
 - Unit and end-to-end tests
 - No HTTPS (or any other security measures)
 - No minification, bundling, gzipping, uglification, ..
+- Use of standard Google Maps API key
 
 
 Standing on the shoulder of giants
