@@ -45,6 +45,7 @@ Not a chance. For instance:
 - No HTTPS (or any other security measures)
 - No minification, bundling, gzipping, uglification, ..
 - Use of standard Google Maps API key
+- No SODA application token for sfdata
 
 
 Standing on the shoulder of giants

@@ -86,10 +86,10 @@ function setRadiusValue(radius) {
 function findTrucksInSearchArea() {
 	this.clearMarkers();
 	
-	$('#search-btn').addClass('blue');
-	$('#search-btn-icon').removeClass('glyphicon-search');
-	$('#search-btn-icon').addClass('glyphicon-cog');
-	$('#search-btn').blur();
+	$('.search-btn').addClass('blue');
+	$('.search-btn-icon').removeClass('glyphicon-search');
+	$('.search-btn-icon').addClass('glyphicon-cog');
+	$('.search-btn').blur();
 	
 	var that = this;
 
@@ -105,9 +105,9 @@ function findTrucksInSearchArea() {
 	}},
 	"json")
 	.always(function() {
-			$('#search-btn').removeClass('blue');
-			$('#search-btn-icon').addClass('glyphicon-search');
-			$('#search-btn-icon').removeClass('glyphicon-cog');
+			$('.search-btn').removeClass('blue');
+			$('.search-btn-icon').addClass('glyphicon-search');
+			$('.search-btn-icon').removeClass('glyphicon-cog');
 	});
 }
 
@@ -141,4 +141,16 @@ function clearMarkers() {
 		this.markers[i].setMap(null);
 	}
 	this.markers = [];
+}
+
+
+// Toggle navigation overlay, big or small
+function resizeCollapse() {
+	$('#nav-open').attr('hidden', true);
+	$('#nav-collapsed').removeAttr('hidden');
+	$('#nav-collapsed').css('width', $('#nav-open').css('width'));
+}
+function resizeOpen() {
+	$('#nav-collapsed').attr('hidden', true);
+	$('#nav-open').removeAttr('hidden');
 }

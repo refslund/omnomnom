@@ -27,8 +27,10 @@
 	
   <body onload="alignWidths()">
     <div id="container">
-			<div id="nav">
-				<label id="nav-header">Let's find some food...</label><br>
+			<div id="nav-open" class="nav">
+				<label id="nav-header">Let's find some food...</label>
+				<span class="pull-right glyphicon glyphicon-resize-small" aria-hidden="true" onclick="resizeCollapse()"></span>
+				<br>
 				
 				<div>
 					<div class="form-inline">
@@ -47,14 +49,24 @@
 				<button class="btn btn-default btn-sm" onclick="clearMarkers()">
 					<span class="glyphicon glyphicon-erase" aria-hidden="true"></span> Clear
 				</button>
-				<button id="search-btn" class="btn btn-default btn-sm" onclick="findTrucksInSearchArea()">
-					<span id="search-btn-icon" class="glyphicon glyphicon-search" aria-hidden="true"></span> Search
+				<button class="search-btn btn btn-default btn-sm" onclick="findTrucksInSearchArea()">
+					<span class="search-btn-icon glyphicon glyphicon-search" aria-hidden="true"></span> Search
 				</button>
 				</div>
 			</div>
 			
 			<div id="map"></div>
     </div>
+		
+		<div id="nav-collapsed" class="nav" hidden>
+			<button class="btn btn-default btn-sm" onclick="clearMarkers()">
+				<span class="glyphicon glyphicon-erase" aria-hidden="true"></span> Clear
+			</button>
+			<button class="search-btn btn btn-default btn-sm" onclick="findTrucksInSearchArea()">
+				<span class="search-btn-icon glyphicon glyphicon-search" aria-hidden="true"></span> Search
+			</button>
+			<span id="resize-open" class="pull-right glyphicon glyphicon-resize-full" aria-hidden="true" onclick="resizeOpen()"></span>
+		</div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

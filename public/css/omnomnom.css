@@ -14,14 +14,27 @@ body {
 	width: 100%;
 	height: 100%
 }
-#nav {
+
+.nav {
 	z-index: 100;
 	position: absolute;
 	bottom: 10px;
 	left: 10px;
 	background-color: #fff;
 	border: 1px #000 Solid;
-	padding: 15px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+#nav-open {
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+#nav-collapsed {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+#resize-open {
+	margin-top: 8px;
 }
 
 #map img {
@@ -40,6 +53,6 @@ body {
 	width: 204px;
 }
 
-#search-btn.blue {
+.search-btn.blue {
 	background-color: skyblue;
 }
