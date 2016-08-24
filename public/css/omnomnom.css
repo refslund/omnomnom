@@ -1,10 +1,29 @@
 html { height: 100% }
 body { height: 100%; margin: 0px; padding: 0px }
 #container { width: 100%; height: 100% }
-#nav { z-index: 100; position: absolute; margin: 10px 0px 0px 200px; background-color: #fff; border: 1px #000 Solid; padding: 5px; }
-#map { width: 100%; height: 100% }
+#map {
+	width: 100%;
+	height: 100%
+}
+#nav {
+	z-index: 100;
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+	background-color: #fff;
+	border: 1px #000 Solid;
+	padding: 15px;
+}
 
 #map img {
 	max-width:  none !important;
 	background: none !important
+}
+
+#lat, #lng {
+	max-width: 100px;
+}
+#xxx-radius {
+	max-width: 135px;
+	margin-right: 17px;
 }

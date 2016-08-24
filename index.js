@@ -10,8 +10,8 @@ app.use(express.static('public'));
 app.get('/getsome', function (req, res) {
 	console.log('get some');
 	
-//	var url = 'https://data.sfgov.org/resource/6a9r-agq8.json?locationid=762182';
-	var url = 'https://data.sfgov.org/resource/6a9r-agq8.json?locationid=760178';
+	var url = 'https://data.sfgov.org/resource/6a9r-agq8.json?locationid=762182';
+//	var url = 'https://data.sfgov.org/resource/6a9r-agq8.json?locationid=760178';
 	var json = '';
 	request(url, function (error, response, body) {
 		if (!error && response.statusCode == 200) {

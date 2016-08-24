@@ -1,9 +1,14 @@
 var map;
 var markers = [];
+var circle;
 
+// Initialize map
+// - Set options and styling
+// - Bind to DOM
+// - Draw search area (circle) 
 function init_map() {
 	var myOptions = {
-		zoom:10,
+		zoom:12,
 		center:new google.maps.LatLng(37.77, -122.39),
 		mapTypeId: google.maps.MapTypeId.ROADMAP,
 		styles: [
@@ -29,9 +34,55 @@ function init_map() {
 		]				
 	};
 	this.map = new google.maps.Map(document.getElementById('map'), myOptions);
+	
+	//
+	// add search area
+	circle = new google.maps.Circle({
+		strokeColor: '#abb5ba',
+		strokeOpacity: 0.2,
+		strokeWeight: 2,
+		fillColor: '#9cbac9',
+		fillOpacity: 0.35,
+		map: this.map,
+		center: {lat: 37.758, lng: -122.389},
+		editable: true,
+		draggable: true,
+		radius: 1650
+	});
+	google.maps.event.addListener(circle, 'radius_changed', function() {
+		setRadiusValue(circle.getRadius())
+	});
+	google.maps.event.addListener(circle, 'center_changed', function() {
+		setLocationValues(circle.getCenter().lat(), circle.getCenter().lng())
+	});
+	this.circle = circle;
+	// init values in html
+	setRadiusValue(circle.getRadius())
+	setLocationValues(circle.getCenter().lat(), circle.getCenter().lng())
 }
 
 google.maps.event.addDomListener(window, 'load', init_map);
+
+
+function setLocationValues(lat, lng) {
+	$('#lat').attr('value', lat);
+	$('#lng').attr('value', lng);
+}
+function setRadiusValue(radius) {
+	$('#radius').attr('value', radius);
+}
+
+//function setLocationFromHtml() {
+//	console.log('**** setLocationFromHtml');
+//	var lat = $('#lat').attr('value');
+//	var lng = $('#lng').attr('value');
+//	var rad = $('#radius').attr('value');
+//	console.log('**** rad', rad);
+//	if (this.circle) {
+//		this.circle.radius = rad;
+//	}
+//}
+
 
 // TEST
 // Dynamically add some markers
@@ -70,12 +121,25 @@ function findMeATruck() {
 		
 		var lat = truck.latitude;
 		var lng = truck.longitude;
+		var title = truck.applicant;
+		var msg = truck.locationdescription + '<br>Type: ' + truck.facilitytype + '<br>' + truck.fooditems + '<br>';
 		
+		
+		// marker
 		var marker = new google.maps.Marker({
 			map: that.map,
 			position: new google.maps.LatLng(lat, lng)
 		});
 		that.markers.push(marker);
+		// info window
+		infowindow = new google.maps.InfoWindow({
+			content: '<strong>'+title+'<\/strong><br>'+msg,
+			maxWidth: 300
+		});
+  	google.maps.event.addListener(
+  		marker,
+  		'click',
+  		function() { infowindow.open(that.map, marker) });
 	}});	
 }
 

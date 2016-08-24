@@ -28,12 +28,33 @@
   <body>
     <div id="container">
 			<div id="nav">
-				Nav Menu<br>
-				<form action="javascript:findMeATruck()">
-					<button type="submit" class="btn btn-default btn-sm">Find truck</button>
+				<label id="nav-header">Let's find some food</label><br>
+				
+				<!-- <form id="location-form" action="javascript:setLocationFromHtml()"> -->
+				<form id="location-form">
+					<div class="form-group">
+						<label for="lat">Location:</label>
+						<div class="form-inline">
+							<input type="text" class="form-control" id="lat" placeholder="Latitude" readonly>
+							<input type="text" class="form-control" id="lng" placeholder="Longitude" readonly>
+						</div>
+					</div>
+					<label for="radius">Radius:</label>
+					<div class="form-inline">
+						<div class="form-group">
+							<input type="number" step="any" class="form-control" id="radius" placeholder="Radius (meter)" readonly>
+							<!-- <button type="submit" id="set-search-area-btn" class="btn btn-info">Set</button> -->
+						</div>
+					</div>
 				</form>
+				
+				<br>
+				<div>
+				<button class="btn btn-default btn-sm" onclick="findMeATruck()">Find truck</button><br>
 				<button class="btn btn-default btn-sm" onclick="clearMarkers()">Clear</button>
+				</div>
 			</div>
+			
 			<div id="map"></div>
     </div>
 
