@@ -23,7 +23,3 @@ body { height: 100%; margin: 0px; padding: 0px }
 #lat, #lng {
 	max-width: 100px;
 }
-#xxx-radius {
-	max-width: 135px;
-	margin-right: 17px;
-}

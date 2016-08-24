@@ -76,66 +76,6 @@ function setRadiusValue(radius) {
 }
 
 
-// TEST
-// Dynamically add some markers
-// TODO Delete function
-//function addMarker() {
-//	console.log('***** add marker');
-//	
-//	marker1 = new google.maps.Marker({
-//		map: this.map,
-//		position: new google.maps.LatLng(37.7748713162388, -122.398531708276)
-//	});
-//	this.markers.push(marker1);
-//	infowindow1 = new google.maps.InfoWindow({content:'<strong>Title<\/strong><br>palo alto<br>'});
-//	marker2 = new google.maps.Marker({
-//		map: this.map,
-//		position: new google.maps.LatLng(37.78, -122.5)
-//	});
-//	this.markers.push(marker2);
-//	google.maps.event.addListener(
-//		marker1,
-//		'click',
-//		function() {
-//			infowindow1.open(this.map, marker1);
-//		});
-//}
-
-// TEST
-// Look up food truck by locationid
-// TODO Delete function
-//function findMeATruck() {
-//	var that = this;
-//	
-//	$.ajax({url: "/getsome", success: function(result){
-//		var json = JSON.parse(result);
-//		var truck = json[0];
-//		
-//		var lat = truck.latitude;
-//		var lng = truck.longitude;
-//		var title = truck.applicant;
-//		var msg = truck.locationdescription + '<br>Type: ' + truck.facilitytype + '<br>' + truck.fooditems + '<br>';
-//		
-//		
-//		// marker
-//		var marker = new google.maps.Marker({
-//			map: that.map,
-//			position: new google.maps.LatLng(lat, lng)
-//		});
-//		that.markers.push(marker);
-//		// info window
-//		infowindow = new google.maps.InfoWindow({
-//			content: '<strong>'+title+'<\/strong><br>'+msg,
-//			maxWidth: 300
-//		});
-//  	google.maps.event.addListener(
-//  		marker,
-//  		'click',
-//  		function() { infowindow.open(that.map, marker) }
-//		);
-//	}});
-//}
-
 // Reads location from DOM.
 // Calls search service,
 // and displays markers for result.
