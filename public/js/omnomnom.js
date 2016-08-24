@@ -2,6 +2,10 @@ var map;
 var markers = [];
 var circle;
 
+function alignWidths() {
+		$('#rad-label').width($('#loc-label').width());
+}
+
 // Initialize map
 // - Set options and styling
 // - Bind to DOM
@@ -82,6 +86,11 @@ function setRadiusValue(radius) {
 function findTrucksInSearchArea() {
 	this.clearMarkers();
 	
+	$('#search-btn').addClass('blue');
+	$('#search-btn-icon').removeClass('glyphicon-search');
+	$('#search-btn-icon').addClass('glyphicon-cog');
+	$('#search-btn').blur();
+	
 	var that = this;
 
 	var lat = $('#lat').attr('value');
@@ -94,7 +103,12 @@ function findTrucksInSearchArea() {
 			var truck = json[i];
 			that.buildTruckMarker(truck);
 	}},
-	"json");
+	"json")
+	.always(function() {
+			$('#search-btn').removeClass('blue');
+			$('#search-btn-icon').addClass('glyphicon-search');
+			$('#search-btn-icon').removeClass('glyphicon-cog');
+	});
 }
 
 function buildTruckMarker(truck) {

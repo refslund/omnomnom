@@ -20,6 +20,17 @@ body { height: 100%; margin: 0px; padding: 0px }
 	background: none !important
 }
 
+#nav-header {
+	margin-bottom: 10px;
+}
+
 #lat, #lng {
 	max-width: 100px;
+}
+#radius {
+	width: 204px;
+}
+
+#search-btn.blue {
+	background-color: skyblue;
 }
