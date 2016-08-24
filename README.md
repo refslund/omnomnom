@@ -28,15 +28,22 @@ No persistent data store
 - No problem with stale caches
 - Very easy installation
 
-No Google Maps API key
-
-No HTTPS
-- No good reason to do this. Only lazyness.
-
 External dependencies (Bootstrap, JQuery, ..) served from external CDNs.
 - Limit size of project (KB, number of files)
 - Simplicity
 - Website requires internet access anyway
+
+
+Production ready?
+=================
+
+Not a chance. For instance:
+
+- [sfdata application token](https://dev.socrata.com/consumers/getting-started.html)
+- [sfdata query paging](https://dev.socrata.com/docs/paging.html). Right now: A hard coded limit and no UI indication
+- No Google Maps API key
+- Unit and end-to-end tests
+- No HTTPS (or any other security measures)
 
 
 Standing on the shoulder of giants

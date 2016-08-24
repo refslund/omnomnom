@@ -139,8 +139,49 @@ function findMeATruck() {
   	google.maps.event.addListener(
   		marker,
   		'click',
-  		function() { infowindow.open(that.map, marker) });
-	}});	
+  		function() { infowindow.open(that.map, marker) }
+		);
+	}});
+}
+
+function findTrucksInSearchArea() {
+	this.clearMarkers();
+	
+	var that = this;
+
+	var data = {lat: 37.758, lng: -122.389, radius: 1650};
+	
+	$.post("/search", data, function(json) {
+		// TODO for each...
+//		console.log('**** got some json');
+//		console.log('**** jsons', json.length);
+		for (var i=0; i < json.length; i++) {
+			var truck = json[i];
+//			console.log('**** truck: ', truck);
+
+			var lat = truck.latitude;
+			var lng = truck.longitude;
+			var title = truck.applicant;
+			var msg = truck.locationdescription + '<br>Type: ' + truck.facilitytype + '<br>' + truck.fooditems + '<br>';
+
+			// marker
+			var marker = new google.maps.Marker({
+				map: that.map,
+				position: new google.maps.LatLng(lat, lng)
+			});
+			// info window + click listener
+			var infowindow = new google.maps.InfoWindow({
+				content: '<strong>'+title+'<\/strong><br>'+msg,
+				maxWidth: 300
+			});
+			google.maps.event.addListener(
+				marker,
+				'click',
+				function() { infowindow.open(that.map, marker) }
+			);
+			that.markers.push(marker);
+	}},
+	"json");
 }
 
 // Clears all food truck markers from the map
