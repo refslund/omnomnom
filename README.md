@@ -11,7 +11,7 @@ Architecture and Design Decisions
 =================================
 
 Simplicity
-- Most tradeoffs and design decisions have been made in favor of simplicity. Both in actual lines of codes, as well as in architecture and deployment considerations.
+- Most tradeoffs and design decisions have been made in favor of simplicity. In actual lines of codes, but also in architecture and deployment considerations.
 
 Everything hosted in a single Node.js server.
 - Lightweight, fast, scales well ("but isn't Node single threaded?" - yes, but you could eg. put a bunch of them behind a load balancer)
@@ -44,6 +44,7 @@ Not a chance. For instance:
 - No Google Maps API key
 - Unit and end-to-end tests
 - No HTTPS (or any other security measures)
+- No minification, bundling, gzipping, uglification, ..
 
 
 Standing on the shoulder of giants

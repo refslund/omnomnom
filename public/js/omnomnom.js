@@ -149,39 +149,39 @@ function findTrucksInSearchArea() {
 	
 	var that = this;
 
+	// TODO not hard coded
 	var data = {lat: 37.758, lng: -122.389, radius: 1650};
 	
 	$.post("/search", data, function(json) {
-		// TODO for each...
-//		console.log('**** got some json');
-//		console.log('**** jsons', json.length);
 		for (var i=0; i < json.length; i++) {
 			var truck = json[i];
-//			console.log('**** truck: ', truck);
-
-			var lat = truck.latitude;
-			var lng = truck.longitude;
-			var title = truck.applicant;
-			var msg = truck.locationdescription + '<br>Type: ' + truck.facilitytype + '<br>' + truck.fooditems + '<br>';
-
-			// marker
-			var marker = new google.maps.Marker({
-				map: that.map,
-				position: new google.maps.LatLng(lat, lng)
-			});
-			// info window + click listener
-			var infowindow = new google.maps.InfoWindow({
-				content: '<strong>'+title+'<\/strong><br>'+msg,
-				maxWidth: 300
-			});
-			google.maps.event.addListener(
-				marker,
-				'click',
-				function() { infowindow.open(that.map, marker) }
-			);
-			that.markers.push(marker);
+			that.buildTruckMarker(truck);
 	}},
 	"json");
+}
+
+function buildTruckMarker(truck) {
+	var lat = truck.latitude;
+	var lng = truck.longitude;
+	var title = truck.applicant;
+	var msg = truck.locationdescription + '<br>Type: ' + truck.facilitytype + '<br>' + truck.fooditems + '<br>';
+
+	// marker
+	var marker = new google.maps.Marker({
+		map: this.map,
+		position: new google.maps.LatLng(lat, lng)
+	});
+	// info window + click listener
+	var infowindow = new google.maps.InfoWindow({
+		content: '<strong>'+title+'<\/strong><br>'+msg,
+		maxWidth: 300
+	});
+	google.maps.event.addListener(
+		marker,
+		'click',
+		function() { infowindow.open(this.map, marker) }
+	);
+	this.markers.push(marker);
 }
 
 // Clears all food truck markers from the map
