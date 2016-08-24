@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 // serve static files
 app.use(express.static('public'));
 
-const LIMIT = 20;
+const LIMIT = 200;
 
 
 // TEST
