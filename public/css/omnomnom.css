@@ -24,6 +24,9 @@ body {
 	border: 1px #000 Solid;
 	padding-left: 15px;
 	padding-right: 15px;
+	border-radius: 2px;
+	border-color: #ccc;
+	box-shadow: 4px 4px 2px #ddd;
 }
 #nav-open {
 	padding-top: 15px;
@@ -54,5 +57,8 @@ body {
 }
 
 .search-btn.blue {
-	background-color: skyblue;
+	animation: pulse 1s ease-out 2;
+}
+@keyframes pulse {
+  50% { background-color: skyblue }
 }
