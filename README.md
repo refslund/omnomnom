@@ -50,7 +50,6 @@ Not a chance. For instance:
 - No [sfdata application token](https://dev.socrata.com/consumers/getting-started.html)
 - No [sfdata query paging](https://dev.socrata.com/docs/paging.html). Right now: A hard coded limit and no UI indication when that limit is reached
 - No unit or end-to-end tests
-- No HTTPS (or any other security measures)
 - No minification, bundling, gzipping, uglification, ..
 - Use of standard Google Maps API key
 
